@@ -1,34 +1,28 @@
 import './App.css'; /* Global CSS */
-import styles from './App.module.css';
- /* CSS Modules */
-import Layout from './views/Layout/Layout';
+import styles from './App.module.css'; /* CSS Modules */
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Welcome from './views/Welcome/Welcome';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer'
+
 
 export default function App() {
   return (
-    <div
-    
-    >
-      <Layout>
-        <div 
-    //     className={`
-    // bg-gray-100
-    //   text-3xl
-    //   text-center
-    //   rounded
-    // text-slate-600
-    //   font-bold
-    //   p-10
-    //   w-1/2
-    //   mx-auto
-    //   mt-10
-    //   ${styles.myCustomCssClass}
-    // `}
-    >
+    <BrowserRouter>
 
-        <Welcome />
-        </div>
-      </Layout>
+
+    <div className="app">
+      <Header />
+      <Switch>
+        <Route>
+          
+        </Route>
+        <Route>
+          <Welcome path="/" />
+        </Route>
+      </Switch>
+      <Footer />
     </div>
+   </BrowserRouter>
   );
 }
