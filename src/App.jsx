@@ -10,19 +10,21 @@ export default function App() {
     
     >
       <Layout>
-        <div className={`
-    bg-gray-100
-      text-3xl
-      text-center
-      rounded
-    text-slate-600
-      font-bold
-      p-10
-      w-1/2
-      mx-auto
-      mt-10
-      ${styles.myCustomCssClass}
-    `}>
+        <div 
+    //     className={`
+    // bg-gray-100
+    //   text-3xl
+    //   text-center
+    //   rounded
+    // text-slate-600
+    //   font-bold
+    //   p-10
+    //   w-1/2
+    //   mx-auto
+    //   mt-10
+    //   ${styles.myCustomCssClass}
+    // `}
+    >
 
         <Welcome />
         </div>
