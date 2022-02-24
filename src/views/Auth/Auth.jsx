@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom"
 import AuthForm from "../../components/AuthForm/AuthForm"
 
-export default function Auth() {
+export default function Auth({ isSigningUp = false }) {
   return (
       <div
       className="
@@ -16,8 +17,9 @@ export default function Auth() {
       m-10
       "
       >
-        <h2 className="m-10">SignUp/SignIn</h2>
-        <AuthForm />
+        <h2 className="mb-10">{isSigningUp ? 'Sign Up' : 'Sign In'} </h2>
+        <AuthForm label={isSigningUp ? 'Sign Up' : 'Sign In'}  />
+        {isSigningUp ? (<Link className="text-xl text-rose-400 underline" to="/signin">I already have an account!</Link>) : (<Link className="text-xl text-rose-400 underline" to="/signup">I need to create an account!</Link>)}
       </div>
   )
 }

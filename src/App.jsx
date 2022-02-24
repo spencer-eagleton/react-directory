@@ -15,8 +15,11 @@ export default function App() {
     <div className="app">
       <Header />
       <Switch>
-        <Route path="/auth">
+        <Route path="/signin">
           <Auth />
+        </Route>
+        <Route path="/signup">
+          <Auth isSigningUp />
         </Route>
         <Route>
           <Welcome path="/" />

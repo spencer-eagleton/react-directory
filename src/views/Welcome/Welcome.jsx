@@ -22,7 +22,7 @@ export default function Welcome() {
             Create an account, confirm your email, then create your profile!
         </p>
         <Link className="m-5 border-2 border-lime-600 rounded bg-lime-600 text-lime-50"
-            to="/auth">Let's Go!
+            to="/signup">Let's Go!
         </Link>
     </div>
   )
