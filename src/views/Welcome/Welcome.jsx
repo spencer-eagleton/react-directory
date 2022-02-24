@@ -1,10 +1,10 @@
+import { Link } from "react-router-dom"
 
 export default function Welcome() {
   return (
     <div 
     className="
     bg-gray-100
-      text-3xl
       text-center
       rounded
     text-slate-600
@@ -15,8 +15,15 @@ export default function Welcome() {
       mt-10
       "
     >
-        <h1>Welcome to the employee directory!</h1>
-        <p>Create an account, confirm your email, then create your profile!</p>
+        <h1 className="text-3xl m-10">
+            Welcome to the employee directory!
+        </h1>
+        <p className="m-10">
+            Create an account, confirm your email, then create your profile!
+        </p>
+        <Link className="m-5 border-2 border-lime-600 rounded bg-lime-600 text-lime-50"
+            to="/auth">Let's Go!
+        </Link>
     </div>
   )
 }
