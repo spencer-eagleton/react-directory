@@ -1,15 +1,21 @@
+import CurrentProfile from "../../components/CurrentProfile/CurrentProfile";
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
 
 import { useUser } from "../../context/UserContext";
-import { createProfile } from "../../services/profiles";
+import { createProfile, getProfile } from "../../services/profiles";
 
-export default function Profile() {
+export default function Profile({ currentUser = false }) {
     const { setUser } = useUser();
 
-    const handleProfile = async (name, birthday, bio) => {
+    const handleProfile = async (name, email, bio, birthday) => {
         try {
-            const response = await createProfile({ name, email, bio , birthday})
-            console.log(response);
+            if (currentUser) {
+                await createProfile({ name, email, bio, birthday})
+            } else {
+
+                const response = await getProfile(name, email, bio, birthday)
+                console.log(response);
+            }
             
         } catch (error) {
             throw error;
@@ -30,8 +36,14 @@ export default function Profile() {
       mx-auto
       m-10
       ">
-    <h1 className="m-3">Create your profile</h1>
-    <ProfileForm handleProfile={handleProfile} />
+    {currentUser ? (
+        <CurrentProfile />
+    ) : (
+
+        <><h1 className="m-3">Create your profile</h1><ProfileForm handleProfile={handleProfile} /></>
+    )
+
+}
     </div>
     </>
   )

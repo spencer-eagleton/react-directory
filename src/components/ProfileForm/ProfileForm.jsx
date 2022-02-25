@@ -8,14 +8,14 @@ export default function ProfileForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { name, bio, birthday } = formState;
+        const { name, email, bio, birthday } = formState;
 
         try {
             setFormError('');
             if (!name || !bio || !birthday) 
             throw new Error('Please fill out all fields to proceed')
             setLoading(true);
-            await handleProfile(name, bio, birthday)
+            await handleProfile(name, email, bio, birthday)
         } catch (error) {
             setFormError(error.message)
         } finally {
@@ -28,7 +28,7 @@ export default function ProfileForm() {
   return (
     <>
        
-        <form className="flex flex-col">
+        <form onSubmit={handleSubmit} className="flex flex-col">
             
             <input className="m-3" type="text" name="name" value={formState.name} placeholder="name" onChange={handleFormChange}/>
             <input className="m-3" type="text" name="email" value={user.email} placeholder="email" readOnly />

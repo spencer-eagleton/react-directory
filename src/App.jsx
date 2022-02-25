@@ -19,6 +19,9 @@ export default function App() {
           <Route path="/profile">
             <Profile />
           </Route>
+          <Route path="profileview">
+            <Profile currentUser />
+          </Route>
           <Route path="/signin">
             <Auth />
           </Route>
