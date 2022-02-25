@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
 import AuthForm from "../../components/AuthForm/AuthForm"
+import { useUser } from "../../context/UserContext";
 import { signInUser, signUpUser } from '../../services/users';
+
 export default function Auth({ isSigningUp = false }) {
+    const { user, setUser } = useUser();
 
 const handleAuth = async (email, password) => {
     try {
@@ -9,12 +12,14 @@ const handleAuth = async (email, password) => {
             await signUpUser(email, password)
         } else {
             const response = await signInUser(email, password)
-            console.log(response);
+            setUser({ id: response.id, email: response.email })
         }
     } catch (error) {
         throw error;
     }
 };
+
+
 
   return (
       <div

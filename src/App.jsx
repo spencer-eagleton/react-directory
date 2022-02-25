@@ -6,10 +6,12 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer'
 import Auth from './views/Auth/Auth';
 import Profile from './views/Profile/Profile';
+import { UserProvider } from './context/UserContext';
 
 
 export default function App() {
   return (
+    <UserProvider>
     <BrowserRouter>
       <div className="app">
         <Header />
@@ -30,5 +32,6 @@ export default function App() {
         <Footer />
       </div>
     </BrowserRouter>
+    </UserProvider>
   );
 }

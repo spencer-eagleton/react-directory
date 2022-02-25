@@ -7,7 +7,7 @@ export const UserProvider = ({ children }) => {
     const currentUser = getUser();
     const [user, setUser] = useState(currentUser ? { id: currentUser.id, email: currentUser.email} : {});
 
-    value = ({ user, setUser, currentUser })
+    const value = ({ user, setUser, currentUser })
 
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }
