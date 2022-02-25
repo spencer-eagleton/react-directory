@@ -5,28 +5,30 @@ import Welcome from './views/Welcome/Welcome';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer'
 import Auth from './views/Auth/Auth';
+import Profile from './views/Profile/Profile';
 
 
 export default function App() {
   return (
     <BrowserRouter>
-
-
-    <div className="app">
-      <Header />
-      <Switch>
-        <Route path="/signin">
-          <Auth />
-        </Route>
-        <Route path="/signup">
-          <Auth isSigningUp />
-        </Route>
-        <Route>
-          <Welcome path="/" />
-        </Route>
-      </Switch>
-      <Footer />
-    </div>
-   </BrowserRouter>
+      <div className="app">
+        <Header />
+        <Switch>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/signin">
+            <Auth />
+          </Route>
+          <Route path="/signup">
+            <Auth isSigningUp />
+          </Route>
+          <Route>
+            <Welcome path="/" />
+          </Route>
+        </Switch>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }

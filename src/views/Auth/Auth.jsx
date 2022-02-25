@@ -10,9 +10,8 @@ const handleAuth = async (email, password) => {
         } else {
             const response = await signInUser(email, password)
             console.log(response);
-
         }
-     } catch (error) {
+    } catch (error) {
         throw error;
     }
 };
