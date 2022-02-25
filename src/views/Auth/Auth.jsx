@@ -4,7 +4,7 @@ import { useUser } from "../../context/UserContext";
 import { signInUser, signUpUser } from '../../services/users';
 
 export default function Auth({ isSigningUp = false }) {
-    const { user, setUser } = useUser();
+    const { setUser } = useUser();
     const history = useHistory();
 
 const handleAuth = async (email, password) => {

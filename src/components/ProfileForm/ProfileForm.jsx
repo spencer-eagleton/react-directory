@@ -1,14 +1,39 @@
-
+import { useUser } from "../../context/UserContext";
+import { useForm } from "../../hooks/useForm";
+import { useState } from "react";
 export default function ProfileForm() {
+    const { formState, handleFormChange, formError, setFormError } = useForm({ name: '', bio: '', birthday: '' })
+    const { user } = useUser();
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const { name, bio, birthday } = formState;
+
+        try {
+            setFormError('');
+            if (!name || !bio || !birthday) 
+            throw new Error('Please fill out all fields to proceed')
+            setLoading(true);
+            await handleProfile(name, bio, birthday)
+        } catch (error) {
+            setFormError(error.message)
+        } finally {
+            setLoading(false);
+        }
+
+    }
+
+
   return (
     <>
        
         <form className="flex flex-col">
             
-            <input className="m-3" type="text" name="name" value="name" placeholder="name" />
-            <input className="m-3" type="text" name="email" value="email" placeholder="email" />
-            <input className="m-3" type="date" name="birthday" value="birthday" placeholder="email" />
-            <textarea className="m-3" type="text" name="bio" value="bio" placeholder="bio" />
+            <input className="m-3" type="text" name="name" value={formState.name} placeholder="name" onChange={handleFormChange}/>
+            <input className="m-3" type="text" name="email" value={user.email} placeholder="email" readOnly />
+            <input className="m-3" type="date" name="birthday" value={formState.birthday} placeholder="email" onChange={handleFormChange}/>
+            <textarea className="m-3" type="text" name="bio" value={formState.bio} placeholder="bio" onChange={handleFormChange} />
             <button className="m-5 border-2 border-lime-600 rounded bg-amber-200" type="submit">create</button>
         </form>
     </>
