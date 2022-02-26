@@ -6,6 +6,7 @@ import Header from './components/layout/Header';
 import Auth from './views/Auth/Auth';
 import Profile from './views/Profile/Profile';
 import { UserProvider } from './context/UserContext';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 
 export default function App() {
@@ -15,12 +16,9 @@ export default function App() {
       <div className="app">
         <Header />
         <Switch>
-          <Route path="/profile">
+          <ProtectedRoute path="/profile">
             <Profile />
-          </Route>
-          <Route path="profileview">
-            <Profile currentUser />
-          </Route>
+          </ProtectedRoute>
           <Route path="/signin">
             <Auth />
           </Route>

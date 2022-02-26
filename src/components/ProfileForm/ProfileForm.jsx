@@ -29,7 +29,7 @@ export default function ProfileForm() {
     <>
        
         <form onSubmit={handleSubmit} className="flex flex-col">
-            
+            {loading && <h1>Loading...</h1>}
             <input className="m-3" type="text" name="name" value={formState.name} placeholder="name" onChange={handleFormChange}/>
             <input className="m-3" type="text" name="email" value={user.email} placeholder="email" readOnly />
             <input className="m-3" type="date" name="birthday" value={formState.birthday} placeholder="email" onChange={handleFormChange}/>

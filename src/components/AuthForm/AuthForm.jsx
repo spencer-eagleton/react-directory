@@ -27,6 +27,7 @@ export default function AuthForm({ handleAuth }) {
     <div>
         <form onSubmit={handleSubmit} className="flex flex-col">
             {formError && <p className="text-sm text-lime-600">{formError}</p>}
+            {loading && <h1>Loading...</h1>}
             <input className="m-5" type="email" placeholder="email" name="email" value={formState.email} onChange={handleFormChange} />
             <input className="m-5" type="password" placeholder="password" name="password" value={formState.password} onChange={handleFormChange} />
             <button className="m-5 border-2 border-lime-600 rounded bg-amber-200" type="submit">Go!</button>
