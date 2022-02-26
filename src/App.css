@@ -3,4 +3,15 @@
 */
 body {
   @apply bg-amber-200;
+  @apply h-screen;
+  @apply flex;
+  @apply flex-col;
+}
+
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
 }
