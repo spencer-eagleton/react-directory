@@ -16,15 +16,16 @@ export default function App() {
       <div className="app">
         <Header />
         <Switch>
-          <ProtectedRoute path="/profile">
-            <Profile />
-          </ProtectedRoute>
           <Route path="/signin">
             <Auth />
           </Route>
           <Route path="/signup">
             <Auth isSigningUp />
           </Route>
+          <ProtectedRoute path="/profile">
+            <Profile currentUser />
+          </ProtectedRoute>
+
           <Route>
             <Welcome path="/" />
           </Route>

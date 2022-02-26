@@ -5,10 +5,12 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const currentUser = getUser();
-    const [user, setUser] = useState(currentUser ? { id: currentUser.id, email: currentUser.email, name: currentUser.name, birthday: currentUser.birthday, bio: currentUser.bio } : {});
+    const [user, setUser] = useState(currentUser ? { id: currentUser.id, email: currentUser.email,
+        //  name: currentUser.name, birthday: currentUser.birthday, bio: currentUser.bio 
+        } : {});
 
+    console.log(user);
     const value = ({ user, setUser, currentUser })
-
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }
 

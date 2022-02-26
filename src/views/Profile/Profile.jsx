@@ -4,17 +4,17 @@ import ProfileForm from "../../components/ProfileForm/ProfileForm";
 import { useUser } from "../../context/UserContext";
 import { createProfile, getProfile } from "../../services/profiles";
 
-export default function Profile({ currentUser = false }) {
+export default function Profile({ currentUser }) {
     const { setUser } = useUser();
 
     const handleProfile = async (name, email, bio, birthday) => {
         try {
             if (currentUser) {
-                await createProfile({ name, email, bio, birthday})
-            } else {
-
-                const response = await getProfile(name, email, bio, birthday)
+                const response = await getProfile({name, email, bio, birthday})
                 console.log(response);
+            } else {
+                
+                await createProfile({ name, email, bio, birthday})
             }
             
         } catch (error) {

@@ -1,5 +1,10 @@
+import { Link } from "react-router-dom";
+import { useUser } from "../../context/UserContext"
+import { signOutUser } from "../../services/users";
 
 export default function Header() {
+  const { user, setUser } = useUser();
+
   return (
 <nav className="flex items-center justify-between flex-wrap p-6">
   <div className="flex justify-between items-center flex-no-shrink text-white mr-6">
@@ -12,7 +17,20 @@ export default function Header() {
 
     </div>
     <div>
-      <a href="#" className=" text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 mt-0">Sign Out</a>
+    {user?.email ? (
+      <button 
+        onClick={async () => {
+        await signOutUser();
+        setUser({});
+      }} 
+      
+        className=" text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 mt-0">
+        Sign Out
+      </button>
+    ) : (<Link to="/signin">
+          <button className=" text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 mt-0">Sign In</button>
+
+    </Link>)}
     </div>
   </div>
 </nav>

@@ -1,10 +1,12 @@
 import { useUser } from "../../context/UserContext";
 import { useForm } from "../../hooks/useForm";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 export default function ProfileForm() {
     const { formState, handleFormChange, formError, setFormError } = useForm({ name: '', bio: '', birthday: '' })
     const { user } = useUser();
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,6 +18,7 @@ export default function ProfileForm() {
             throw new Error('Please fill out all fields to proceed!')
             setLoading(true);
             await handleProfile(name, email, bio, birthday)
+            history.replace('/')
         } catch (error) {
             setFormError(error.message)
         } finally {

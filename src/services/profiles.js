@@ -2,6 +2,7 @@ import { client, parseData } from './client';
 
 export async function getProfile() {
   const request = await client.from('profiles').select().single();
+  console.log(request);
   return parseData(request);
 }
 
