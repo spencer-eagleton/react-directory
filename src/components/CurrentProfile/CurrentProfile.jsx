@@ -1,6 +1,6 @@
 
 export default function CurrentProfile() {
   return (
-    <div>CurrentProfile</div>
+    <div>Current Profile</div>
   )
 }
