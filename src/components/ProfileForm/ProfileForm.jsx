@@ -13,7 +13,7 @@ export default function ProfileForm() {
         try {
             setFormError('');
             if (!name || !bio || !birthday) 
-            throw new Error('Please fill out all fields to proceed')
+            throw new Error('Please fill out all fields to proceed!')
             setLoading(true);
             await handleProfile(name, email, bio, birthday)
         } catch (error) {
