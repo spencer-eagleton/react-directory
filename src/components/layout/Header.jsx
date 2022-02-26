@@ -18,15 +18,17 @@ export default function Header() {
     </div>
     <div>
     {user?.email ? (
-      <button 
-        onClick={async () => {
-        await signOutUser();
-        setUser({});
-      }} 
-      
-        className=" text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 mt-0">
-        Sign Out
-      </button>
+      <>
+      <span className="mx-10">{user.email}</span>
+      <button
+              onClick={async () => {
+                await signOutUser();
+                setUser({});
+              } }
+
+              className=" text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 mt-0">
+              Sign Out
+            </button></>
     ) : (<Link to="/signin">
           <button className=" text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 mt-0">Sign In</button>
 

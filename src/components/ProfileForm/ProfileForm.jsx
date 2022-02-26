@@ -11,14 +11,14 @@ export default function ProfileForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { name, email, bio, birthday } = formState;
-
         try {
             setFormError('');
-            if (!name || !bio || !birthday) 
-            throw new Error('Please fill out all fields to proceed!')
+            if (!name || !bio || !birthday) {
+                throw new Error('Please fill out all fields to proceed!')
+            }
             setLoading(true);
-            await handleProfile(name, email, bio, birthday)
-            history.replace('/')
+            await createProfile({ name, email, bio, birthday })
+            history.replace('/profile/view')
         } catch (error) {
             setFormError(error.message)
         } finally {

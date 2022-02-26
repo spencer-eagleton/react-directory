@@ -4,23 +4,24 @@ import ProfileForm from "../../components/ProfileForm/ProfileForm";
 import { useUser } from "../../context/UserContext";
 import { createProfile, getProfile } from "../../services/profiles";
 
-export default function Profile({ currentUser }) {
-    const { setUser } = useUser();
+export default function Profile( {currentUser = false} ) {
+   
+//  const { currentUser } = useUser();
 
-    const handleProfile = async (name, email, bio, birthday) => {
-        try {
-            if (currentUser) {
-                const response = await getProfile({name, email, bio, birthday})
-                console.log(response);
-            } else {
+    // const handleProfile = async (name, email, bio, birthday) => {
+    //     try {
+    //         if (currentUser) {
+    //             const data = await getProfile();
+    //             console.log(data);
+    //         } else {
                 
-                await createProfile({ name, email, bio, birthday})
-            }
+    //             await createProfile({ name, email, bio, birthday})
+    //         }
             
-        } catch (error) {
-            throw error;
-        }
-    }
+    //     } catch (error) {
+    //         throw error;
+    //     }
+    // }
 
   return (
     <>
@@ -40,7 +41,9 @@ export default function Profile({ currentUser }) {
         <CurrentProfile />
     ) : (
 
-        <><h1 className="m-3">Create your profile</h1><ProfileForm handleProfile={handleProfile} /></>
+        <><h1 className="m-3">Create your profile</h1><ProfileForm 
+        // handleProfile={handleProfile}
+         /></>
     )
 
 }

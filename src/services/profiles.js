@@ -2,8 +2,9 @@ import { client, parseData } from './client';
 
 export async function getProfile() {
   const request = await client.from('profiles').select().single();
-  console.log(request);
-  return parseData(request);
+  const data = parseData(request);
+  console.log(data);
+  
 }
 
 export async function updateProfile({ name, email, bio, birthday }) {

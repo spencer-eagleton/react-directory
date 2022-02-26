@@ -23,9 +23,11 @@ export default function App() {
             <Auth isSigningUp />
           </Route>
           <ProtectedRoute path="/profile">
-            <Profile currentUser />
+            <Profile />
           </ProtectedRoute>
-
+          <Route path="/profile/view">
+            <Profile currentUser />
+          </Route>
           <Route>
             <Welcome path="/" />
           </Route>
